@@ -2,7 +2,6 @@ package com.movieticketbooking.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -72,20 +71,19 @@ public class UserController {
 	public List<String> getUsernameByInitialLetter(@PathVariable("letter") String letter) {
 		return us.getUsernameByInitialLetter(letter);
 	}
-	
+
 	@GetMapping("/{userId}")
 	public ResponseEntity<Object> getUserByid(@PathVariable int userId) {
-		User user=us.getUserByid(userId);
+		User user = us.getUserByid(userId);
 		if (user == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(user);
-        }
-	}
-
-	@PutMapping("/{userid}/movie/{movieid}")
-		public String updateMovied(@PathVariable int userid, @PathVariable int movieid) {
-			return us.updateMovied(userid,movieid);
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(user);
 		}
 	}
 
+	@PutMapping("/{userid}/movie/{movieid}")
+	public String updateMovied(@PathVariable int userid, @PathVariable int movieid) {
+		return us.updateMovied(userid, movieid);
+	}
+}

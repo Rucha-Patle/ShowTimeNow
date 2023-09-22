@@ -17,36 +17,32 @@ import com.movieticketbooking.service.SeatService;
 
 @RestController
 public class SeatController {
-	
+
 	@Autowired
 	private SeatService ss;
-	
+
 	@GetMapping("/allSeats")
-	public List<Seat> getAllSeats()
-	{
+	public List<Seat> getAllSeats() {
 		return ss.getAllSeats();
 	}
-	
+
 	@GetMapping("{id}/seat")
-	public Seat getSeatByid(@PathVariable int id)
-	{
+	public Seat getSeatByid(@PathVariable int id) {
 		return ss.getSeatByid(id);
 	}
-	
+
 	@PostMapping("/saveSeat")
 	public String saveSeat(@RequestBody Seat seat) {
 		return ss.saveSeat(seat);
 	}
-	
+
 	@PutMapping("/{id}/updateSeat")
-	public String updateSeatNo(@PathVariable int id, @RequestParam("seatNo") int seatNo)
-	{
-		return ss.updateSeatNo(id,seatNo);
+	public String updateSeatNo(@PathVariable int id, @RequestParam("seatNo") int seatNo) {
+		return ss.updateSeatNo(id, seatNo);
 	}
-	
+
 	@DeleteMapping("/delete-seat/{id}")
-	public String deleteMapping(@PathVariable int id)
-	{
+	public String deleteMapping(@PathVariable int id) {
 		return ss.deleteMapping(id);
 	}
 }

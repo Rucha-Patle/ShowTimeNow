@@ -23,12 +23,10 @@ public class MovieController {
 
 	@GetMapping("movie/{id}")
 	public ResponseEntity<Movie> getMoviebyId(@PathVariable int id) {
-		Movie movie=ms.getMoviebyId(id);
-		if(movie==null)
-		{
-			 return ResponseEntity.notFound().build();
-		}
-		else {
+		Movie movie = ms.getMoviebyId(id);
+		if (movie == null) {
+			return ResponseEntity.notFound().build();
+		} else {
 			return ResponseEntity.ok(movie);
 		}
 	}

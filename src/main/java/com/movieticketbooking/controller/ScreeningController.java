@@ -1,6 +1,7 @@
 package com.movieticketbooking.controller;
 
 import java.sql.Date;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -163,17 +164,16 @@ public class ScreeningController {
 			return ResponseEntity.badRequest().build();
 		}
 	}
-	
+
 	@GetMapping("/movieid-between-screeningid")
 	public ResponseEntity<Object> getMovieBetweenScreeningid(@RequestParam("start-screeningid") int startId,
-            @RequestParam("end-screeningid") int endId){
-		List<Integer> movieid=ss.getMovieBetweenScreeningid(startId,endId);
-		
-		if(movieid.isEmpty())
-		{
-			 return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(movieid);
-        }
+			@RequestParam("end-screeningid") int endId) {
+		List<Integer> movieid = ss.getMovieBetweenScreeningid(startId, endId);
+
+		if (movieid.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		} else {
+			return ResponseEntity.ok(movieid);
+		}
 	}
 }
